@@ -11,3 +11,24 @@
 
 How to install the jenkins on the machine?
 
+
+
+	• https://support.sisense.com/hc/en-us/articles/360009441734-How-to-Export-a-Certificate-using-the-Certificate-Export-Wizard(How to export the certificates and assign the password)
+	1.    Installed certificate on server(pfx) 
+	2.       Changed pfx to jks for jenkins server 
+	3.      keytool -importkeystore -srckeystore <path-to-cert-file.pfx> -srcstoretype pkcs12 -destkeystore jenkins.example.com.jks -deststoretype JKS 
+	4.               10. Jenkins xml configuration changed  
+	5. --httpPort=-1  (to stop Jenkins from listening over plain HTTP) 
+	6. --httpsPort=443  (or 8443 or whatever SSL port you want Jenkins to listen on) 
+	7. --httpsKeyStore="%JENKINS_HOME%(Giove the local Path)\jenkins.example.com.jks" 
+	8. --httpsKeyStorePassword="<cleartext-password-to-keystore>" 
+	 
+	9. Pfx Certificate Password:Welc0me 
+	 
+	
+	From <https://onenote.officeapps.live.com/o/onenoteframe.aspx?ui=en-US&hid=e06ae720-d0ac-48bd-bf12-3ca85ccb7b85&wopisrc=https%3A%2F%2Fcmog.sharepoint.com%2Fsites%2FDreamIT%2F_vti_bin%2Fwopi.ashx%2Ffolders%2F0716eb92061f43cd98cb2784d1391c54&wdorigin=teams&embed=1&embedded=1&removeshareui=1&hideheader=0&hidepagesearch=1&disablefile=0&disableview=0&disableprint=1&disablechat=1&jsapi=1&newsession=1&corrid=340f008a-0bb2-4a53-bed2-a5390608f6a8&usid=340f008a-0bb2-4a53-bed2-a5390608f6a8&wdredirectionreason=Unified_NotEditOrViewActionUrl> 
+	
+	
+How to put change certificate format and give JAVA_HOME to local path in the keystore parameter
+https://wiki.jenkins.io/pages/viewpage.action?pageId=135468777
+
