@@ -32,3 +32,32 @@ How to install the jenkins on the machine?
 How to put change certificate format and give JAVA_HOME to local path in the keystore parameter
 https://wiki.jenkins.io/pages/viewpage.action?pageId=135468777
 
+
+
+node {
+    stage('clone')
+    {
+      git 'https://github.com/kaviproject/TestJenkin_VS2019'
+    }
+
+    stage('Restore NUget Packages ')
+    {
+      bat label: '', script: '''"C:\\Users\\ParupatiK\\tools\\nuget.exe" restore "C:\\Program Files (x86)\\Jenkins\\workspace\\POCPIPELINE\\TestJenkin_VS2019.sln" 
+'''
+    }
+    stage('BUILD')
+    {
+  
+     bat "\"${tool 'MSBuild'}\\msbuild.exe\" TestJenkin_VS2019.sln /p:Configuration=Release /t:clean /t:package /p:FilesToIncludeForPublish=AllFilesInProjectFolder"
+    }
+    stage('Testing')
+    {
+        echo 'Testing results'
+    }
+    stage('Deploy')
+    {
+        bat label: '', script: 'C:\\"Program Files (x86)"\\IIS\\"Microsoft Web Deploy V3"\\msdeploy.exe -verb:sync -source:package="C:\\Program Files (x86)\\Jenkins\\workspace\\POCPIPELINE\\TestJenkin_VS2019\\obj\\Release\\Package\\TestJenkin_VS2019.zip" -dest:auto,computername=\'xxxxx\',username=\'xxxx\',password=\'xxxx\' -setParam:name="IIS Web Application Name",value="Default Web Site\\ParupatikComputerCDDeploy"'
+    }
+}
+
+
