@@ -61,3 +61,8 @@ node {
 }
 
 
+<b>Kubernates Link:</b>
+https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app
+https://medium.com/containerum/configuring-ci-cd-on-kubernetes-with-jenkins-89eab7234270
+
+
