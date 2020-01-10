@@ -34,6 +34,10 @@ https://wiki.jenkins.io/pages/viewpage.action?pageId=135468777
 
 
 
+
+
+
+
 node {
     stage('clone')
     {
@@ -64,5 +68,10 @@ node {
 <b>Kubernates Link:</b>
 https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app
 https://medium.com/containerum/configuring-ci-cd-on-kubernetes-with-jenkins-89eab7234270
+
+
+Userful Docker links:
+https://www.freecodecamp.org/news/docker-101-fundamentals-and-practice-edb047b71a51/
+https://djangostars.com/blog/what-is-docker-and-how-to-use-it-with-python/
 
 
